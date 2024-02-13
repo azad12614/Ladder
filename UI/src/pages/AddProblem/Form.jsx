@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-function Form() {
+function Form(URL) {
   const navigate = useNavigate();
 
   function formHandle(event) {
@@ -19,7 +19,7 @@ function Form() {
       Level,
       Knowledge,
     };
-    fetch(`http://localhost:3000/add-${Rating}`, {
+    fetch(`${URL}/add-${Rating}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

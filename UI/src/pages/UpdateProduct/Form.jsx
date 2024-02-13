@@ -1,6 +1,6 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 
-function Form() {
+function Form(URL) {
   const navigate = useNavigate();
   const product = useLoaderData();
 
@@ -22,7 +22,7 @@ function Form() {
       price,
       description,
     };
-    fetch(`http://localhost:3000/update/${product?._id}`, {
+    fetch(`${URL}/update/${product?._id}`, {
       method: "PUT",
       headers: {
         "Content-type": "application/json",

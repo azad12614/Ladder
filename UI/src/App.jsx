@@ -5,10 +5,9 @@ import Home from "./pages/Home/Home";
 import AddProblem from "./pages/AddProblem/AddProblem";
 import ViewProblem from "./pages/ViewProblem/ViewProblem";
 import ManageProduct from "./pages/ManageProduct/ManageProduct";
-import ProductDetails from "./pages/Details/ProductDetails";
 import UpdateProduct from "./pages/UpdateProduct/UpdateProduct";
 
-function App() {
+function App(URL) {
   const [Handle, setHandle] = useState("Enter CF Handle");
 
   function sendValue(Handle) {
@@ -30,23 +29,16 @@ function App() {
     },
     {
       path: "/manage-product",
-      element: <ManageProduct />,
+      element: <ManageProduct URL={[URL]}/>,
       loader: function () {
-        return fetch("http://localhost:3000/all-products");
-      },
-    },
-    {
-      path: "/product/:id",
-      element: <ProductDetails></ProductDetails>,
-      loader: function ({ params }) {
-        return fetch(`http://localhost:3000/product/${params.id}`);
+        return fetch(`${URL}/all-products`);
       },
     },
     {
       path: "/update/:id",
-      element: <UpdateProduct></UpdateProduct>,
+      element: <UpdateProduct URL={[URL]}></UpdateProduct>,
       loader: function ({ params }) {
-        return fetch(`http://localhost:3000/product/${params.id}`);
+        return fetch(`${URL}/product/${params.id}`);
       },
     }
   ]);

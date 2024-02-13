@@ -4,11 +4,11 @@ import { FaEye } from "react-icons/fa";
 import { TbHttpDelete } from "react-icons/tb";
 import { GrUpdate } from "react-icons/gr";
 
-function Table() {
+function Table(URL) {
   const navigate = useNavigate();
   const products = useLoaderData();
   function handleDelete(id) {
-    fetch(`http://localhost:3000/delete/${id}`, {
+    fetch(`${URL}/delete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
