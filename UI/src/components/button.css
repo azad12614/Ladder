@@ -1,0 +1,49 @@
+#submit{
+    padding: 5px 10px;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #dfbb13;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 6px #555;
+}
+
+#submit:hover {
+    background-color: #dfaa13
+}
+
+#submit:active {
+    background-color: #fff;
+    color: #dfbb13;
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
+}
+
+.button {
+    padding: 10px 15px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #dfbb13;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #555;
+}
+
+.button:hover {
+    background-color: #dfaa13
+}
+
+.button:active {
+    background-color: #fff;
+    color: #dfbb13;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
