@@ -1,6 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 
+//const URL = `http://localhost:3000`;
+const URL = `https://ladder-backend.onrender.com`;
+
 export default ({ propsValue }) => {
     var err = 1, f = 0, i = 0, table = ``, user = [];
 
@@ -28,7 +31,7 @@ export default ({ propsValue }) => {
             }
 
             try {
-                await fetch(`http://localhost:3000/all-${propsValue[1]}`)
+                await fetch(`${URL}/all-${propsValue[1]}`)
                     .then((data) => {
                         return data.json();
                     }).then((list2) => {
