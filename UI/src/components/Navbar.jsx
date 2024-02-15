@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <>
       <div className="navbar fixed z-1 mx-auto px-1 lg:px-3 max-w-screen bg-[#161A30]">
-        <div className="navbar-start">
+        <div className="mx-auto">
           <Link to='/'>
             <img src={`${logo}`} className="-m-4 ml-3 w-16 rounded-lg" />
           </Link>
@@ -15,6 +15,7 @@ function Navbar() {
             </h1>
           </Link>
         </div>
+        {/*
         <div className="navbar-end pr-8 font-bold text-xl text-white">
           <Link to={"/add-problem"}>
             <div className="font-bold text-center sm:text-lg md:text-xl lg:text-2xl text-[#FFFFFF] hover:text-[#dfbb13]">
@@ -22,6 +23,7 @@ function Navbar() {
             </div>
           </Link>
         </div>
+        */}
       </div>
     </>
   );
