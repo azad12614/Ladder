@@ -13,7 +13,7 @@ function Hero() {
         <div className="hero-content flex-col lg:flex-row-reverse pt-8">
           <div className="text-center mt-96">
             <Link to={"/view-problem"}>
-              <button class="button">
+              <button className="button">
                 Get Started Now!
               </button>
             </Link>

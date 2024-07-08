@@ -8,6 +8,6 @@ const URL = `https://ladder-backend.onrender.com`;
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   //<React.StrictMode>
-    <App URL={[URL]}/>
+    <App URL={URL}/>
   //</React.StrictMode>,
 )
