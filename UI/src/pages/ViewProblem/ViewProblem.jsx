@@ -11,7 +11,7 @@ function ViewProduct({ Handle, sendValue }) {
     Handle = event.target.Handle.value;
     // console.log(Handle);
     sendValue(Handle);
-    
+
   }
 
   function Ratings(Rating) {
@@ -41,7 +41,7 @@ function ViewProduct({ Handle, sendValue }) {
         <input type="radio" name="my_tabs_2" role="tab" className="tab text-white" onClick={Ratings(800)} aria-label="800" />
         <div role="tabpanel" id="800" className="tab-content bg-base-100 text-white border-base-300 rounded-box p-6">
           {/*<RProblem propsValue={[Handle, 800]}></RProblem>*/}
-          {Ratings(800)}
+          {/* {Ratings(800)} */}
           {table[0]}
         </div>
 
