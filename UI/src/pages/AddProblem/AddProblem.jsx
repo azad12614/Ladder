@@ -1,26 +1,42 @@
+// import Footer from "../../components/Footer";
+// import Form from "./Form";
+// import Navbar from "../../components/Navbar";
+// import { Link } from "react-router-dom";
+
+// function AddProblem(URL) {
+//   return (
+//     <div className="d-flex flex-column max-w-full vh-100 overflow-x-hidden bg-[#31304D]">
+//       <Navbar></Navbar>
+//       <div className="mt-28">
+//         <Form URL={[URL]}></Form>
+//         <div className="text-center my-4">
+//           <Link to={"/view-problem"}>
+//             <button class="button">View Problem!</button>
+//           </Link>
+//         </div>
+//       </div>
+//       <div className="mt-auto mb-0">
+//         <Footer></Footer>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default AddProblem;
+
 import Footer from "../../components/Footer";
 import Form from "./Form";
 import Navbar from "../../components/Navbar";
-import '../../components/button.css';
-import { Link } from "react-router-dom";
+import "./AddProblem.css";
 
-function AddProblem(URL) {
+function AddProblem({ URL }) {
   return (
-    <div className="d-flex flex-column max-w-full vh-100 overflow-x-hidden bg-[#31304D]">
-      <Navbar></Navbar>
-      <div className="mt-28">
-        <Form URL={[URL]}></Form>
-        <div className="text-center my-4">
-          <Link to={"/view-problem"}>
-            <button class="button">
-              View Problem!
-            </button>
-          </Link>
-        </div>
+    <div className="add-problem">
+      <Navbar />
+      <div className="add-problem-content">
+        <Form URL={URL} />
       </div>
-      <div className="mt-auto mb-0">
-        <Footer></Footer>
-      </div>
+      <Footer />
     </div>
   );
 }

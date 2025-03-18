@@ -1,11 +1,14 @@
-import Hero from "../../components/Hero";
 import Navbar from "../../components/Navbar";
+import Hero from "../../components/Hero";
+import Footer from "../../components/Footer";
+import "./Home.css";
 
 function Home() {
   return (
-    <div className="d-flex flex-column max-w-full vh-100 overflow-x-hidden bg-[#31304D]">
-      <Navbar></Navbar>
-      <Hero></Hero>
+    <div className="home">
+      <Navbar />
+      <Hero />
+      <Footer />
     </div>
   );
 }

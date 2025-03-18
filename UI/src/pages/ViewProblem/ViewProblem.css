@@ -1,0 +1,124 @@
+.view-problem {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 120px);
+  padding-top: 100px;
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+.handle-form {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.handle-form input {
+  padding: 0.8rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: var(--border-radius);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+  font-size: 1rem;
+  width: 60%;
+  max-width: 300px;
+}
+
+.handle-form button {
+  padding: 0.8rem 1.5rem;
+  background: var(--accent-color);
+  color: var(--primary-color);
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.handle-form button:hover {
+  background: var(--hover-color);
+}
+
+.tabs-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.tab {
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  background: var(--primary-color);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab.active {
+  background: var(--accent-color);
+  color: var(--primary-color);
+}
+
+.tab:hover {
+  background: var(--accent-color);
+  color: var(--primary-color);
+}
+
+.tab-content {
+  background: var(--glassmorphism-bg);
+  backdrop-filter: blur(10px);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 1rem auto;
+}
+
+.problem-list table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--text-color);
+}
+
+.problem-list th,
+.problem-list td {
+  padding: 1rem;
+  border: 1px solid var(--secondary-color);
+  text-align: center;
+}
+
+.problem-list th {
+  background-color: var(--primary-color);
+  color: var(--accent-color);
+}
+
+.problem-list a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.problem-list a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .handle-form input {
+    width: 80%;
+  }
+
+  .tabs-container {
+    flex-wrap: wrap;
+  }
+
+  .tab {
+    padding: 0.5rem;
+  }
+
+  .problem-list th,
+  .problem-list td {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
