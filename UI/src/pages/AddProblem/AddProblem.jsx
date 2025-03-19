@@ -36,7 +36,7 @@ function AddProblem({ URL }) {
       <div className="add-problem-content">
         <Form URL={URL} />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

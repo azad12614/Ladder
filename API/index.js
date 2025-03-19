@@ -400,7 +400,7 @@ async function connectToDB() {
 }
 
 // Generic CRUD operations for a collection
-function createCRUDRoutes(collectionName) {
+function createCRUDRoutes(db, collectionName) {
   const collection = db.collection(collectionName);
 
   // Add a problem
@@ -478,7 +478,7 @@ async function startServer() {
 
   // Create CRUD routes for each collection
   Object.keys(collections).forEach((key) => {
-    createCRUDRoutes(collections[key]);
+    createCRUDRoutes(db, collections[key]);
   });
 
   // Serve the UI

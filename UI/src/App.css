@@ -1,0 +1,27 @@
+@supports (scrollbar-color: var(--primary-color) var(--accent-color)) {
+  * {
+    scrollbar-color: var(--primary-color) var(--accent-color);
+    scrollbar-width: thin;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0.75rem;
+  height: auto;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-color);
+  border-radius: 100vw;
+  margin-block: 0.1rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border: 0.1rem solid var(--text-color);
+  border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hover-color);
+}
