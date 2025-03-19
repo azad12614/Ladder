@@ -27,7 +27,7 @@
 import Footer from "../../components/Footer";
 import Form from "./Form";
 import Navbar from "../../components/Navbar";
-import "./AddProblem.css";
+import "./AddProblem";
 
 function AddProblem({ URL }) {
   return (
