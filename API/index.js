@@ -165,7 +165,8 @@ if (!process.env.DB_URL || !process.env.JWT_SECRET) {
 
 // Middleware
 app.use(cors());
-app.use(cors({ origin: "http://localhost:5173" })); // Replace with your frontend URL
+// app.use(cors({ origin: "http://localhost:5173" })); // Replace with your frontend URL
+app.use(cors({ origin: "https://cf-ladder.onrender.com/" })); // Replace with your frontend URL
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../UI")));
 
