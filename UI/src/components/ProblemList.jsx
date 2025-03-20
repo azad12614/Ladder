@@ -26,7 +26,6 @@ export default ({ propsValue }) => {
           return info.result;
         })
         .then((value) => {
-          console.log(value);
           value.map((P) => {
             list[j] = [];
             list[j][0] = P.problem.contestId;
@@ -38,8 +37,6 @@ export default ({ propsValue }) => {
     } catch (error) {}
 
     list.sort;
-    console.log(list.length);
-    console.log(list);
 
     const Get = async () => {
       try {
