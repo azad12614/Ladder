@@ -17,8 +17,10 @@ function AddProblem({ URL }) {
   }, [navigate]); // `navigate` dependency ensures the effect runs once when component is mounted
 
   return (
-    <div className="add-problem-content">
-      <Form URL={URL} />
+    <div className="add-problem">
+      <div className="add-problem-content">
+        <Form URL={URL} />
+      </div>
     </div>
   );
 }
