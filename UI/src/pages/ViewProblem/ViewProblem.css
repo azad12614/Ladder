@@ -1,12 +1,11 @@
 /* ViewProblem.css */
-
 .view-problem-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   background: var(--background-color);
   color: var(--text-color);
-  padding-top: 100px;
+  padding-top: 80px;
 }
 
 .handle-form {
@@ -102,10 +101,6 @@
 
 .tab-content.active {
   display: block;
-}
-
-.footer-container {
-  margin-top: auto;
 }
 
 /* Responsive Design */

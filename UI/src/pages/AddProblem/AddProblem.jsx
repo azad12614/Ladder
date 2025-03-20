@@ -1,42 +1,24 @@
-// import Footer from "../../components/Footer";
-// import Form from "./Form";
-// import Navbar from "../../components/Navbar";
-// import { Link } from "react-router-dom";
-
-// function AddProblem(URL) {
-//   return (
-//     <div className="d-flex flex-column max-w-full vh-100 overflow-x-hidden bg-[#31304D]">
-//       <Navbar></Navbar>
-//       <div className="mt-28">
-//         <Form URL={[URL]}></Form>
-//         <div className="text-center my-4">
-//           <Link to={"/view-problem"}>
-//             <button class="button">View Problem!</button>
-//           </Link>
-//         </div>
-//       </div>
-//       <div className="mt-auto mb-0">
-//         <Footer></Footer>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default AddProblem;
-
-import Footer from "../../components/Footer";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Form from "./Form";
-import Navbar from "../../components/Navbar";
-import "./AddProblem";
+import "./AddProblem.css";
 
 function AddProblem({ URL }) {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if the token is present in localStorage (indicating the user is logged in)
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      // If no token is found, redirect to the login page
+      navigate("/login");
+    }
+  }, [navigate]); // `navigate` dependency ensures the effect runs once when component is mounted
+
   return (
-    <div className="add-problem">
-      <Navbar />
-      <div className="add-problem-content">
-        <Form URL={URL} />
-      </div>
-      {/* <Footer /> */}
+    <div className="add-problem-content">
+      <Form URL={URL} />
     </div>
   );
 }

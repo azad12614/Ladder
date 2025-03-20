@@ -6,9 +6,9 @@
 :root {
   --primary-color: #161a30; /* Dark blue */
   --secondary-color: #1f2544; /* Slightly lighter blue */
-  --accent-color: #ffd700; /* Gold */
+  --accent-color: #d4b500; /* Gold */
   --text-color: #ffffff; /* White */
-  --hover-color: #ffa500; /* Orange for hover effects */
+  --hover-color: #d48a00; /* Orange for hover effects */
   --background-color: linear-gradient(
     135deg,
     #0a0f24,

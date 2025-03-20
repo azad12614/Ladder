@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar";
 import RProblem from "../../components/ProblemList";
 import "./ViewProblem.css";
 
@@ -31,7 +29,6 @@ function ViewProduct({ Handle: initialHandle, sendValue }) {
 
   return (
     <div className="view-problem-container">
-      <Navbar />
       <form onSubmit={handleSubmit} className="handle-form">
         <input
           type="text"
@@ -69,9 +66,6 @@ function ViewProduct({ Handle: initialHandle, sendValue }) {
         {renderTabContent(1300)}
         {renderTabContent(1400)}
       </div>
-      {/* <div className="footer-container">
-        <Footer />
-      </div> */}
     </div>
   );
 }

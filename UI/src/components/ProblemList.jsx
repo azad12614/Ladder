@@ -1,8 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-//const URL = `http://localhost:3000`;
-const URL = `https://ladder-backend.onrender.com`;
+const URL = `http://localhost:3000`;
+// const URL = `https://ladder-backend.onrender.com`;
 
 export default ({ propsValue }) => {
   var f = 0,
