@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "./Form";
-import "./AddProblem.css";
+import "./Problem.css";
 
 function AddProblem({ URL }) {
   const navigate = useNavigate();
