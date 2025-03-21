@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import RProblem from "../../components/ProblemList";
+import React, { useState, useEffect } from "react";
+import ProblemList from "../../components/ProblemList";
 import "./ViewProblem.css";
 
-function ViewProduct({ Handle: initialHandle, sendValue }) {
+function ViewProblem({ Handle: initialHandle, sendValue }) {
   const [handle, setHandle] = useState(initialHandle || "");
   const [activeTab, setActiveTab] = useState(800);
 
@@ -23,9 +23,35 @@ function ViewProduct({ Handle: initialHandle, sendValue }) {
       id={rating.toString()}
       className={`tab-content ${activeTab === rating ? "active" : ""}`}
     >
-      <RProblem propsValue={[handle, rating]} />
+      <ProblemList propsValue={[handle, rating]} />
     </div>
   );
+
+  useEffect(() => {
+    if (handle) {
+      {
+        renderTabContent(800);
+      }
+      {
+        renderTabContent(900);
+      }
+      {
+        renderTabContent(1000);
+      }
+      {
+        renderTabContent(1100);
+      }
+      {
+        renderTabContent(1200);
+      }
+      {
+        renderTabContent(1300);
+      }
+      {
+        renderTabContent(1400);
+      }
+    }
+  }, [handle]);
 
   return (
     <div className="view-problem-container">
@@ -70,4 +96,4 @@ function ViewProduct({ Handle: initialHandle, sendValue }) {
   );
 }
 
-export default ViewProduct;
+export default ViewProblem;

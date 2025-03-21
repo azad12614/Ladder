@@ -1,101 +1,141 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import "./ProblemList.css";
 
 // const URL = `http://localhost:3000`;
 const URL = `https://ladder-backend.onrender.com`;
 
-export default ({ propsValue }) => {
-  var f = 0,
-    i = 1,
-    j = 0,
-    table = ``;
-
-  const Api = `https://codeforces.com/api/user.status?handle=${propsValue[0]}`;
-
+const ProblemList = ({ propsValue }) => {
   const [tables, setTables] = useState([]);
-
-  var list = [];
+  const [handle, setHandle] = useState(propsValue[0] || "");
+  const [apiCallFailed, setApiCallFailed] = useState(false); // Track if API call failed
+  const Api = `https://codeforces.com/api/user.status?handle=${handle}`;
 
   useEffect(() => {
-    try {
-      fetch(Api)
-        .then((data) => {
-          return data.json();
-        })
-        .then((info) => {
-          return info.result;
-        })
-        .then((value) => {
-          value.map((P) => {
-            list[j] = [];
-            list[j][0] = P.problem.contestId;
-            list[j][1] = P.problem.index;
-            list[j][2] = P.verdict;
-            j++;
-          });
-        });
-    } catch (error) {}
+    // Reset the failed status when the handle changes
+    setApiCallFailed(false);
 
-    list.sort;
+    const fetchData = async () => {
+      // First, check if the API call has failed previously
+      if (apiCallFailed || propsValue[1] != 800) {
+        // If failed, just fetch the problems from the local API
+        console.log(
+          "Fetching problems from local API due to previous failure."
+        );
+        fetchLocalProblems();
+        return;
+      }
 
-    const Get = async () => {
       try {
-        await fetch(`${URL}/all-${propsValue[1]}`)
-          .then((data) => {
-            return data.json();
-          })
-          .then((list2) => {
-            list2.map((problem2) => {
-              if (list.length) {
-                // console.log("hello");
-                list.map((value) => {
-                  var PLink = `https://codeforces.com/problemset/problem/${value[0]}/${value[1]}`;
-                  console.log(PLink);
-                  if (PLink === problem2.Link) {
-                    f = 1;
-                    table += `<tr><td class='border-1 border-black'>${i}</td><td class='border-1 border-black'><a href="${problem2.Link}" target="_blank" class='link link-primary'>${problem2.Name}</a></td><td class='border-1 border-black'>${problem2.Tags}</td><td class='border-1 border-black'>${problem2.Level}</td><td class='border-1 border-black'>${problem2.Knowledge}</td><td class='border-1 border-black'>${value[2]}</td></tr>`;
-                    return;
-                  }
-                });
-                // console.log("hello");
-              }
-              if (f === 0) {
-                table += `<tr><td class='border-1 border-black'>${i}</td><td class='border-1 border-black'><a href="${problem2.Link}" target="_blank" class='link link-primary'>${problem2.Name}</a></td><td class='border-1 border-black'>${problem2.Tags}</td><td class='border-1 border-black'>${problem2.Level}</td><td class='border-1 border-black'>${problem2.Knowledge}</td><td class='border-1 border-black'>X</td></tr>`;
-              }
-              f = 0;
-              i = i + 1;
-            });
-            setTables(table);
+        const userStatusResponse = await fetch(Api);
+        const userStatusData = await userStatusResponse.json();
+
+        if (userStatusData.status !== "OK") {
+          // If the Codeforces API returns an error, set the flag to true
+          setApiCallFailed(true);
+          console.error("Codeforces API call failed:", userStatusData);
+          fetchLocalProblems(); // Fallback to local API if Codeforces fails
+          return;
+        }
+
+        const userProblems = userStatusData.result;
+
+        // Fetch problems from local API
+        const allProblemsResponse = await fetch(`${URL}/all-${propsValue[1]}`);
+        const allProblemsData = await allProblemsResponse.json();
+
+        let table = "";
+        let i = 1;
+
+        allProblemsData.forEach((problem) => {
+          const problemLink = `https://codeforces.com/problemset/problem/${problem.contestId}/${problem.index}`;
+          const status = userProblems.find((userProblem) => {
+            const userProblemLink = `https://codeforces.com/problemset/problem/${userProblem.problem.contestId}/${userProblem.problem.index}`;
+            return userProblemLink === problem.Link;
           });
+
+          const verdict = status ? status.verdict : null;
+          let verdictClass = "";
+          if (verdict === "OK") {
+            verdictClass = "ac"; // AC - Accepted
+          } else if (verdict === "WRONG_ANSWER") {
+            verdictClass = "wa"; // WA - Wrong Answer
+          } else {
+            verdictClass = "x"; // X - Not Solved
+          }
+
+          table += `
+            <tr class="problem-row">
+              <td class="border-1 border-black">${i}</td>
+              <td class="border-1 border-black"><a href="${
+                problem.Link
+              }" target="_blank" class='link link-primary'>${
+            problem.Name
+          }</a></td>
+              <td class="border-1 border-black">${problem.Tags}</td>
+              <td class="border-1 border-black">${problem.Level}</td>
+              <td class="border-1 border-black">${problem.Knowledge}</td>
+              <td class="border-1 border-black ${verdictClass}">${
+            verdict ? verdict : "X"
+          }</td>
+            </tr>
+          `;
+          i++;
+        });
+        setTables(table);
       } catch (error) {
-        err = 1;
+        // If the Codeforces API call fails, we will handle it gracefully
+        console.error("Error with Codeforces API:", error);
+        setApiCallFailed(true);
+        fetchLocalProblems(); // Fallback to local API if error occurs
       }
     };
-    Get();
-  }, [propsValue[0]]);
+
+    const fetchLocalProblems = async () => {
+      try {
+        const allProblemsResponse = await fetch(`${URL}/all-${propsValue[1]}`);
+        const allProblemsData = await allProblemsResponse.json();
+
+        let table = "";
+        let i = 1;
+        allProblemsData.forEach((problem) => {
+          table += `
+            <tr>
+              <td class="border-1 border-black">${i}</td>
+              <td class="border-1 border-black"><a href="${problem.Link}" target="_blank" class="link link-primary">${problem.Name}</a></td>
+              <td class="border-1 border-black">${problem.Tags}</td>
+              <td class="border-1 border-black">${problem.Level}</td>
+              <td class="border-1 border-black">${problem.Knowledge}</td>
+              <td class="border-1 border-black">X</td>
+            </tr>
+          `;
+          i++;
+        });
+        setTables(table);
+      } catch (error) {
+        console.error("Error with local API:", error);
+      }
+    };
+
+    fetchData();
+  }, [handle, propsValue]); // Fetch only when `handle` changes
 
   return (
-    <>
-      <table
-        className="table table-striped table-hover table-border"
-        id="myTable"
-      >
+    <div className="table-container">
+      <table className="problem-table">
         <thead>
           <tr className="text-center">
-            <td className="border-2 border-blue">No.</td>
-            <td className="border-2 border-blue">Problem</td>
-            <td className="border-2 border-blue">Tags</td>
-            <td className="border-2 border-blue">Difficulty Level</td>
-            <td className="border-2 border-blue">Required Knowledge</td>
-            <td className="border-2 border-blue">Status</td>
+            <th className="border-2 border-blue">No.</th>
+            <th className="border-2 border-blue">Problem</th>
+            <th className="border-2 border-blue">Tags</th>
+            <th className="border-2 border-blue">Difficulty Level</th>
+            <th className="border-2 border-blue">Required Knowledge</th>
+            <th className="border-2 border-blue">Status</th>
           </tr>
         </thead>
-        <tbody
-          id="Lists"
-          className="text-center"
-          dangerouslySetInnerHTML={{ __html: tables }}
-        ></tbody>
+        <tbody dangerouslySetInnerHTML={{ __html: tables }} />
       </table>
-    </>
+    </div>
   );
 };
+
+export default ProblemList;
