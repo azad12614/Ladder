@@ -224,30 +224,6 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.post("/forgot-password", async (req, res) => {
-  const { email } = req.body;
-  try {
-    const user = await userModel.findUserByEmail(email);
-    if (!user) {
-      return res.status(404).send({ error: "User not found" });
-    }
-    // Send password reset link (mock implementation)
-    res.status(200).send({ message: "Password reset link sent to email" });
-  } catch (error) {
-    res.status(500).send({ error: "Failed to process request" });
-  }
-});
-
-app.post("/update-password", async (req, res) => {
-  const { username, newPassword } = req.body;
-  try {
-    const result = await userModel.updatePassword(username, newPassword);
-    res.status(200).send({ message: "Password updated successfully", result });
-  } catch (error) {
-    res.status(500).send({ error: "Failed to update password" });
-  }
-});
-
 // Protected route example
 app.get("/protected", authenticateToken, (req, res) => {
   res.send({ message: "This is a protected route", user: req.user });

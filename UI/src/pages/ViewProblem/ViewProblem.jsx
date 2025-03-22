@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ProblemList from "../../components/ProblemList";
 import "./ViewProblem.css";
 
-function ViewProblem({ Handle: initialHandle, sendValue }) {
+function ViewProblem({ Handle: initialHandle, sendValue, URL }) {
   const [handle, setHandle] = useState(initialHandle || "");
   const [activeTab, setActiveTab] = useState(800);
 
@@ -23,7 +23,7 @@ function ViewProblem({ Handle: initialHandle, sendValue }) {
       id={rating.toString()}
       className={`tab-content ${activeTab === rating ? "active" : ""}`}
     >
-      <ProblemList propsValue={[handle, rating]} />
+      <ProblemList propsValue={[handle, rating, URL]} />
     </div>
   );
 

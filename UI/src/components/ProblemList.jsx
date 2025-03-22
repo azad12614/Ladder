@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./ProblemList.css";
 
-// const URL = `http://localhost:3000`;
-const URL = `https://ladder-backend.onrender.com`;
-
 const ProblemList = ({ propsValue }) => {
   const [tables, setTables] = useState([]);
   const [handle, setHandle] = useState(propsValue[0] || "");
   const [apiCallFailed, setApiCallFailed] = useState(false); // Track if API call failed
   const Api = `https://codeforces.com/api/user.status?handle=${handle}`;
+  const URL = propsValue[2];
 
   useEffect(() => {
     // Reset the failed status when the handle changes
@@ -94,6 +92,9 @@ const ProblemList = ({ propsValue }) => {
       try {
         const allProblemsResponse = await fetch(`${URL}/all-${propsValue[1]}`);
         const allProblemsData = await allProblemsResponse.json();
+
+        // Sorting the problems by Level (difficulty)
+        allProblemsData.sort((a, b) => a.Level - b.Level);
 
         let table = "";
         let i = 1;

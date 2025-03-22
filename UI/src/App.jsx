@@ -6,7 +6,6 @@ import AddProblem from "./pages/AddProblem/AddProblem";
 import ViewProblem from "./pages/ViewProblem/ViewProblem";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
-import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import Layout from "./components/Layout";
 
 function App({ URL }) {
@@ -37,7 +36,7 @@ function App({ URL }) {
       path: "/view-problem",
       element: (
         <Layout>
-          <ViewProblem Handle={Handle} sendValue={sendValue} />
+          <ViewProblem Handle={Handle} sendValue={sendValue} URL={URL} />
         </Layout>
       ),
     },
@@ -54,14 +53,6 @@ function App({ URL }) {
       element: (
         <Layout>
           <Register URL={URL} />
-        </Layout>
-      ),
-    },
-    {
-      path: "/forgot-password",
-      element: (
-        <Layout>
-          <ForgotPassword URL={URL} />
         </Layout>
       ),
     },

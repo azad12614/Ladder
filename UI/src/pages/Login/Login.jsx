@@ -55,9 +55,6 @@ const Login = ({ URL }) => {
       <p>
         Don't have an account? <a href="/register">Register</a>
       </p>
-      <p>
-        Forgot Password? <a href="/forgot-password">Reclaim</a>
-      </p>
     </div>
   );
 };
