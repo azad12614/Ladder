@@ -48,14 +48,14 @@ function App({ URL }) {
         </Layout>
       ),
     },
-    {
-      path: "/register",
-      element: (
-        <Layout>
-          <Register URL={URL} />
-        </Layout>
-      ),
-    },
+    // {
+    //   path: "/register",
+    //   element: (
+    //     <Layout>
+    //       <Register URL={URL} />
+    //     </Layout>
+    //   ),
+    // },
   ]);
 
   return <RouterProvider router={router} />;

@@ -59,12 +59,12 @@ function Navbar() {
             >
               Login
             </Link>
-            <Link
+            {/* <Link
               to="/register"
               className={`register-btn nav-link ${isActive("/register")}`}
             >
               Register
-            </Link>
+            </Link> */}
           </>
         ) : (
           <>
@@ -116,13 +116,13 @@ function Navbar() {
             >
               Login
             </Link>
-            <Link
+            {/* <Link
               to="/register"
               className={`register-btn nav-link ${isActive("/register")}`}
               onClick={() => setIsMenuOpen(false)}
             >
               Register
-            </Link>
+            </Link> */}
           </>
         ) : (
           <>
