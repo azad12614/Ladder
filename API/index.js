@@ -210,6 +210,7 @@ app.post("/login", async (req, res) => {
   const { username, password } = req.body;
   try {
     const user = await userModel.findUserByUsername(username);
+    // console.log(user);
     if (!user) {
       return res.status(404).send({ error: "User not found" });
     }

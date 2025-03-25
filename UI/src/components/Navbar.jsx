@@ -57,7 +57,7 @@ function Navbar() {
               to="/login"
               className={`login-btn nav-link ${isActive("/login")}`}
             >
-              Login
+              Admin Login
             </Link>
             {/* <Link
               to="/register"
