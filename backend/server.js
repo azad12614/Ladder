@@ -14,8 +14,10 @@ app.use(cors());
 app.use(express.json());
 
 // 🔐 API Routes
-app.use("/api/admin", authRoutes);
-app.use("/api/problems", problemRoutes);
+app.use("https://ladder-backend.onrender.com/api/admin", authRoutes);
+app.use("https://ladder-backend.onrender.com/api/problems", problemRoutes);
+// app.use("/api/admin", authRoutes);
+// app.use("/api/problems", problemRoutes);
 
 // 🌐 Connect to MongoDB and then start server
 connectDB().then(() => {
