@@ -1,0 +1,121 @@
+/* ===================== */
+/* File: src/components/ProblemCard.css */
+/* ===================== */
+.problem-card {
+  background: var(--glassmorphism-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 1.2rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.problem-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--box-shadow);
+}
+
+.problem-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+@media (min-width: 600px) {
+  .problem-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.problem-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.problem-name:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+.problem-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+@media (min-width: 600px) {
+  .problem-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.5rem 1.2rem;
+  }
+}
+
+.problem-details p {
+  font-size: 0.95rem;
+  margin: 0;
+  word-wrap: break-word;
+}
+
+.label {
+  font-weight: 500;
+  color: var(--accent);
+  margin-right: 0.3rem;
+}
+
+/* Problem action buttons */
+.delete-button,
+.approve-button,
+.deny-button {
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background-color 0.3s ease;
+  color: white;
+  border: none;
+}
+
+.delete-button {
+  background-color: var(--btn-delete);
+}
+
+.delete-button:hover {
+  background-color: var(--btn-delete-hover);
+}
+
+.approve-button {
+  background-color: var(--btn-approve);
+}
+
+.approve-button:hover {
+  background-color: var(--btn-approve-hover);
+}
+
+.deny-button {
+  background-color: var(--btn-deny);
+}
+
+.deny-button:hover {
+  background-color: var(--btn-deny-hover);
+}
+
+/* Pending approval label */
+.pending-label {
+  background-color: var(--warning-bg);
+  color: #1f2937;
+  padding: 0.35rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  align-self: flex-start;
+}

@@ -1,0 +1,54 @@
+/* 📁 src/pages/ManageProblem.css */
+.manage-problem-page {
+  max-width: 1000px;
+  margin: 6rem auto 0;
+  padding: 2rem;
+  background: var(--glassmorphism-bg);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.manage-problem-page h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+  text-align: center;
+}
+
+.rating-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.rating-tabs button {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--primary);
+  background: var(--secondary);
+  color: var(--text);
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+
+.rating-tabs button.active {
+  background: var(--primary);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.rating-tabs button:hover {
+  background: var(--primary-hover);
+  color: #fff;
+}
+
+.problem-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}

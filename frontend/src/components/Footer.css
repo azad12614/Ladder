@@ -1,0 +1,16 @@
+/* ===================== */
+/* File: src/components/Footer.css */
+/* ===================== */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--hover-bg);
+  color: var(--text);
+  font-size: 0.95rem;
+  margin-top: auto;
+  border-top: 2px solid #615e5e;
+}
+
+.footer > p {
+  padding-top: 0.5rem;
+}

@@ -1,0 +1,138 @@
+/* 📁 src/pages/ManageAdmin.css */
+.approval-page {
+  max-width: 800px;
+  margin: 6rem auto auto auto;
+  padding: 2rem;
+  background-color: var(--bg-alt);
+  color: var(--text);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.approval-page h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  color: var(--primary);
+}
+
+.empty-msg {
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.approval-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.approval-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background: var(--glassmorphism-bg);
+  padding: 1rem 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.admin-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.admin-info strong {
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+.admin-email {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.status {
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.status.approved {
+  color: var(--btn-approve);
+}
+
+.status.pending {
+  color: var(--btn-delete);
+}
+
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: var(--primary);
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-deny {
+  background-color: var(--btn-delete);
+}
+
+.btn-deny:hover {
+  background-color: var(--btn-delete-hover);
+}
+
+.btn-revoke {
+  background-color: var(--btn-approve);
+}
+
+.btn-revoke:hover {
+  background-color: var(--btn-approve-hover);
+}
+
+.unauthorized {
+  text-align: center;
+  color: var(--btn-delete);
+  font-weight: bold;
+  margin-top: 3rem;
+  font-size: 1.2rem;
+}
+
+/* Responsive Layout */
+@media (max-width: 600px) {
+  .approval-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .action-buttons {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .admin-info strong {
+    font-size: 1rem;
+  }
+}

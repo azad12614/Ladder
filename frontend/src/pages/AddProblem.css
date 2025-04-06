@@ -1,0 +1,52 @@
+/* src/pages/AddProblem.css */
+.add-problem-page {
+  max-width: 600px;
+  margin: 6rem auto 3rem;
+  padding: 2rem;
+  background-color: var(--bg-alt);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  color: var(--text);
+}
+
+.add-problem-page h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.add-problem-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.add-problem-form input,
+.add-problem-form textarea {
+  padding: 0.8rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border);
+  background: var(--glassmorphism-bg);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.add-problem-form button {
+  padding: 0.8rem;
+  background: var(--primary);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.add-problem-form button:hover {
+  background: var(--primary-hover);
+}
+
+.add-problem-message {
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: bold;
+}

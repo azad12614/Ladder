@@ -1,0 +1,66 @@
+---
+
+## 📄 1. **Project Description & Requirement Document**
+
+### 🧠 **Project Name**: *Ladder – Competitive Programming Training Platform*
+
+### 🧾 **Overview**  
+**Ladder** is a role-based, admin-maintained **competitive programming training platform** designed to help users progress through Codeforces problems organized by difficulty. It offers an efficient workflow for admins to manage problems and allows public users to track their problem-solving status in real-time using their Codeforces handle.
+
+---
+
+### 🎯 **Core Objectives**
+- Build a secure, admin-only backend to manage a growing problem database.
+- Support multi-admin structure with role distinction (Main Admin, Admin).
+- Display problem ladders categorized by difficulty (ratings: 800–2500).
+- Allow public users to track their progress using Codeforces handle.
+- Provide real-time verdicts like AC, WA, TLE, or X for each problem.
+- Maintain a modern, user-friendly interface with theming support.
+
+---
+
+### 🧑‍💼 **User Roles**
+
+#### 🔹 **Main Admin**
+- Directly logs in using credentials stored in DB
+- Approves or denies admin registration requests
+- Approves or denies problem deletion requests
+- Can directly delete problems
+- Can revoke admin access
+
+#### 🔸 **Admin**
+- Must be approved by the Main Admin
+- Can add, edit, or request deletion of problems
+
+#### ⚪ **Public User**
+- No authentication or login required
+- Can view problem ladders
+- Submits Codeforces handle to track progress
+
+---
+
+### 🧩 **Key Features**
+
+#### 🔐 Admin Authentication
+- JWT-based login
+- Role-based access control
+- OTP system for email verification and password recovery
+
+#### 🧠 Problem Management
+- Each problem includes:
+  - `Name`, `Link`, `Tags`, `Level`, `Knowledge`, `addedBy`, `deleteRequested`
+- Stored in dynamic MongoDB collections by rating (800, 900, ..., 2500)
+
+#### 📊 Codeforces Integration
+- Real-time verdict status based on user-submitted handle
+- Data fetched only when handle changes
+
+#### 🎨 UI & Experience
+- Futuristic blue-themed UI with dark/light/system theming
+- Fully responsive with dynamic feedback
+
+#### 📁 Deployment
+- Full-stack deployment on Render
+- Separate frontend and backend environments
+
+---

@@ -1,0 +1,156 @@
+/* 📁 src/pages/ProblemList.css */
+.problem-list-container {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 4rem auto 0;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.handle-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.handle-form input {
+  padding: 10px 14px;
+  font-size: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  width: 250px;
+  background: var(--bg-alt);
+  color: var(--text);
+  transition: border-color 0.2s ease;
+}
+
+.handle-form input:focus {
+  border-color: var(--primary);
+}
+
+.handle-form button {
+  padding: 10px 16px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.handle-form button:hover {
+  background-color: var(--primary-hover);
+}
+
+.rating-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.rating-tabs button {
+  padding: 8px 14px;
+  border: 1px solid var(--primary);
+  background-color: var(--bg-alt);
+  color: var(--primary);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rating-tabs button.active {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.rating-tabs button:hover {
+  background-color: var(--hover-bg);
+}
+
+.problem-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.problem-table th,
+.problem-table td {
+  padding: 12px 10px;
+  border: 1px solid var(--border);
+  text-align: left;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.problem-table a {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.status-ac {
+  color: var(--status-ac);
+  font-weight: bold;
+}
+
+.status-wa {
+  color: var(--status-wa);
+  font-weight: bold;
+}
+
+.status-tle {
+  color: var(--status-tle);
+  font-weight: bold;
+}
+
+.status-x {
+  color: var(--status-x);
+  font-style: italic;
+}
+
+.progress-note {
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+
+.row-ac {
+  background-color: var(--row-ac);
+}
+
+.row-wa {
+  background-color: var(--row-wa);
+}
+
+.row-tle {
+  background-color: var(--row-tle);
+}
+
+.sort-options {
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sort-options select {
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background-color: var(--bg-alt);
+  color: var(--text);
+}

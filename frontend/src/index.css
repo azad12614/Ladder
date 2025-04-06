@@ -1,0 +1,213 @@
+/* global CSS*/
+:root {
+  /* 🎨 Primary Theme Colors */
+  --primary: #1e90ff;
+  --primary-hover: #1c7ed6;
+  --secondary: #0f172a;
+  --secondary-hover: #1e293b;
+  --accent: #185169;
+  --accent-hover: #054a69;
+
+  /* 🌞 Light Mode Backgrounds */
+  --bg: #eeeef0;
+  --bg-alt: #ffffff;
+  --glassmorphism-bg: rgba(30, 144, 255, 0.08);
+  --hover-bg: rgba(30, 143, 255, 0.15);
+  --background-gradient: linear-gradient(135deg, #d0dcf0, #f0f4f8);
+
+  /* 🧾 Text */
+  --text: #0f172a;
+  --text-muted: #475569;
+
+  /* 🧱 Border & Shadow */
+  --border: #454f5c;
+  --box-shadow: 0 10px 28px rgba(30, 144, 255, 0.1);
+  --border-radius: 18px;
+
+  /* ✅ Status Backgrounds */
+  --success-bg: #d1fae5;
+  --danger-bg: #fee2e2;
+  --warning-bg: #fef3c7;
+  --info-bg: #dbeafe;
+
+  /* ✅ Status Text */
+  --status-ac: #16a34a;
+  --status-wa: #dc2626;
+  --status-tle: #f59e0b;
+  --status-x: #6b7280;
+
+  /* ✅ Status Row Backgrounds */
+  --row-ac: #d1fae5;
+  --row-wa: #fee2e2;
+  --row-tle: #fef3c7;
+
+  /* 🖱️ Cursor */
+  --cursor: url("./assets/cursor-dark.png"), auto;
+  --pointer: url("./assets/pointer-dark.png"), auto;
+
+  /* 🖱️ Scrollbars */
+  --scrollbar-bg: #e2e8f0;
+  --scrollbar-thumb: #94a3b8;
+
+  /* 🚨 Button Colors */
+  --btn-delete: #ef4444;
+  --btn-delete-hover: #dc2626;
+  --btn-approve: #10b981;
+  --btn-approve-hover: #059669;
+  --btn-deny: #f97316;
+  --btn-deny-hover: #ea580c;
+}
+
+[data-theme="dark"] {
+  /* 🎨 Primary Theme Colors */
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --secondary: #0f172a;
+  --secondary-hover: #1e293b;
+  --accent: #60a5fa;
+  --accent-hover: #3b82f6;
+
+  /* 🌚 Dark Mode Backgrounds */
+  --bg: #0a0e1a;
+  --bg-alt: #111827;
+  --glassmorphism-bg: rgba(255, 255, 255, 0.06);
+  --hover-bg: rgba(255, 255, 255, 0.08);
+  --background-gradient: linear-gradient(135deg, #0f172a, #1e293b);
+
+  /* 🧾 Text */
+  --text: #f1f5f9;
+  --text-muted: #9ca3af;
+
+  /* 🧱 Border & Shadow */
+  --border: #91969c;
+  --box-shadow: 0 10px 32px rgba(0, 0, 0, 0.5);
+  --border-radius: 18px;
+
+  /* ✅ Status Backgrounds */
+  --success-bg: #14532d;
+  --danger-bg: #7f1d1d;
+  --warning-bg: #78350f;
+  --info-bg: #1e3a8a;
+
+  /* ✅ Status Text */
+  --status-ac: #22c55e;
+  --status-wa: #f87171;
+  --status-tle: #facc15;
+  --status-x: #94a3b8;
+
+  /* ✅ Status Row Backgrounds */
+  --row-ac: #064e3b;
+  --row-wa: #7f1d1d;
+  --row-tle: #78350f;
+
+  /* 🖱️ Cursor */
+  --cursor: url("./assets/cursor-light.png"), auto;
+  --pointer: url("./assets/pointer-light.png"), auto;
+
+  /* 🖱️ Scrollbars */
+  --scrollbar-bg: #1e293b;
+  --scrollbar-thumb: #475569;
+
+  /* 🚨 Button Colors */
+  --btn-delete: #ef4444;
+  --btn-delete-hover: #dc2626;
+  --btn-approve: #10b981;
+  --btn-approve-hover: #059669;
+  --btn-deny: #f97316;
+  --btn-deny-hover: #ea580c;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Reset and Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  cursor: var(--cursor);
+  scroll-behavior: smooth;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Headings styled with Space Grotesk for tech-vibe */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+}
+
+/* Code-like areas: Problem names, Codeforces handles, etc */
+.code-style,
+.handle,
+.problem-name,
+pre,
+code {
+  font-family: "JetBrains Mono", monospace;
+  background-color: var(--glassmorphism-bg);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+/* Optional accent text (used for tags, highlights) */
+.accent-text {
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* Button styling already looks good — we keep Inter */
+button {
+  font-family: "Inter", sans-serif;
+  background-color: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: var(--pointer);
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--accent);
+  cursor: var(--pointer);
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary);
+  cursor: var(--pointer);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}

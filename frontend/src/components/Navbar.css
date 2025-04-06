@@ -1,0 +1,127 @@
+/* ===================== */
+/* File: src/components/Navbar.css */
+/* ===================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  background-color: var(--hover-bg);
+  box-shadow: var(--box-shadow);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar-left .logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.navbar-left .logo img {
+  width: 1.75rem;
+  margin-bottom: -0.25rem;
+  padding-right: 0.2rem;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.navbar-links li a,
+.navbar-links li button {
+  color: var(--text);
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  cursor: var(--pointer);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-links li a:hover,
+.navbar-links li button:hover {
+  color: var(--primary-hover);
+  background-color: var(--hover-bg);
+  cursor: var(--pointer);
+}
+
+.navbar-links li button {
+  font-family: inherit;
+}
+
+.theme-toggle-button {
+  font-size: 1.2rem;
+  padding: 0.4rem;
+  background: var(--glassmorphism-bg);
+  border: none;
+  border-radius: 50%;
+  cursor: var(--pointer);
+  color: var(--text);
+  transition: background 0.3s ease;
+}
+
+.theme-toggle-button:hover {
+  background: var(--hover-bg);
+}
+
+/* Mobile Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+  cursor: var(--pointer);
+}
+
+.hamburger span {
+  height: 3px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+.navbar-links {
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    transform: translateY(-200%);
+    z-index: 999;
+  }
+
+  .navbar-links.active {
+    transform: translateY(0);
+  }
+
+  .navbar-links li {
+    width: 100%;
+    text-align: center;
+  }
+}

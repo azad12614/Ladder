@@ -1,0 +1,113 @@
+/* // src/pages/admindashboard */
+.admin-dashboard {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 4rem;
+  flex-grow: 1;
+}
+
+.admin-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.admin-header h1 {
+  font-size: 2.5rem;
+  color: var(--primary);
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.role-badge {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+.admin-widgets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.widget-card {
+  background-color: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s;
+}
+
+.widget-card:hover {
+  transform: translateY(-4px);
+}
+
+.widget-card h3 {
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.widget-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.quick-actions {
+  text-align: center;
+}
+
+.quick-actions h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--primary-hover);
+}
+
+.actions-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: var(--pointer);
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-approve {
+  background-color: var(--btn-approve);
+}
+
+.btn-approve:hover {
+  background-color: var(--btn-approve-hover);
+}
+
+.btn-delete {
+  background-color: var(--btn-delete);
+}
+
+.btn-delete:hover {
+  background-color: var(--btn-delete-hover);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-hover);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: var(--accent-hover);
+}

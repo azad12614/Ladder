@@ -1,0 +1,155 @@
+---
+
+## ✅ Development Roadmap: **Ladder – Competitive Programming Training Platform**
+
+> 📌 Assigned Developer: **Abdullah Al Azad**  
+> 👤 Role: Solo Full-Stack Developer  
+> 🎯 Goal: Complete a full-featured CP training platform with admin-only authentication and public user progress tracking
+
+---
+
+### ✅ **PHASE 1 – Project Setup & Base Structure**
+
+#### 🔹 Backend
+- Initialized Node.js + Express backend
+- Connected to MongoDB Atlas with Mongoose
+- Organized backend structure: `routes`, `controllers`, `models`, `middlewares`, `utils`
+- Configured `.env` and environment-based setup
+- Installed and configured essential packages:
+  - `express`, `mongoose`, `cors`, `dotenv`
+  - `bcryptjs`, `jsonwebtoken`, `nodemailer`
+- Enabled CORS and JSON parsing middlewares
+
+#### 🔹 Frontend
+- Bootstrapped frontend with Vite + React
+- Created project folder structure: `pages`, `components`, `utils`, `assets`
+- Set up **React Router** with protected routes
+- Implemented **theme toggle** using CSS variables and global styling
+- Built core reusable layout elements: `Navbar`, `Footer`, `Button`, `Loader`
+
+---
+
+### 🔐 **PHASE 2 – Admin Authentication System**
+
+#### 🔹 Main Admin Login
+- Implemented secure JWT-based login for the **main admin**
+- Passwords hashed with bcrypt; tokens saved in `localStorage`
+
+#### 🔹 Admin Registration & Approval Flow
+- Admins register with email → marked as `isApproved: false` by default
+- Main admin views pending list and can:
+  - ✅ Approve → sets `isApproved: true`
+  - ❌ Deny → deletes the admin from DB
+  - 🔁 Revoke → sets `isApproved: false`
+
+#### 🔹 Role-Based Access Control & Navigation
+- Role stored in JWT; decoded and used on frontend
+- Dynamic navigation menu:
+  - **User:** Home, View Problems, Login, Register, Theme Toggle  
+  - **Admin:** Dashboard, View Problems, Manage Problems, Logout  
+  - **Main Admin:** Dashboard, View Problems, Manage Problems, Manage Admins, Logout
+
+---
+
+### 📚 **PHASE 3 – Problem Management System**
+
+#### 🔹 Backend – Dynamic MongoDB per Rating
+- Each problem rating (e.g., `800`, `900`, etc.) stored in its own collection
+- Problem schema: `Name`, `Link`, `Tags`, `Level`, `Knowledge`, `addedBy`, `deleteRequested`
+
+#### 🔹 Problem Routes
+```js
+// 🔹 Add a problem (admin only)
+POST    /problems/:rating                     → addProblem()
+
+// 🔹 Get problems by rating (public)
+GET     /problems/:rating                     → getProblemsByRating()
+
+// 🔹 Update problem by ID (admin only)
+PUT     /problems/:rating/:id                 → updateProblem()
+
+// 🔹 Request deletion (admin only)
+DELETE  /problems/:rating/:id                 → requestDeleteProblem()
+
+// 🔹 View pending deletions (main admin only)
+GET     /problems/pending-deletions/:rating   → getPendingDeletes()
+
+// 🔹 Approve and delete (main admin only)
+DELETE  /problems/approve-delete/:rating/:id  → approveDeleteProblem()
+
+// 🔹 Deny delete request (main admin only)
+PATCH   /problems/deny-delete/:rating/:id     → denyDeleteProblem()
+```
+
+> 🔐 All routes protected with `verifyToken`, and some restricted via `requireMainAdmin`
+
+---
+
+#### 🔹 Frontend
+- Built `ManageProblem.jsx` with:
+  - Rating tabs (800–1400) to filter and view problems
+  - Live refresh and dynamic data fetching
+  - Admin-only interface for adding and updating problems
+- `ProblemCard.jsx` component:
+  - Displays: **Name**, **Tags**, **Level**, **Knowledge**, **addedBy**
+  - For Admins:
+    - Request delete (triggers pending approval)
+  - For Main Admin:
+    - View all pending deletions
+    - Approve or deny pending deletions
+    - Direct delete when no request is pending
+  - Shows delete status with a `⏳ Pending Approval` label
+
+---
+
+### 🌐 PHASE 4 – **Public User Interface & Codeforces Integration**
+
+#### 🔹 Codeforces Handle Submission
+- [x] Input field for CF handle
+- [x] Store handle in local state / session
+- [x] Fetch submission data from Codeforces API only on handle change
+- [x] Compare submissions with platform problems to mark as Solved/Unsolved
+
+#### 🔹 Public Ladder View
+- [x] Create `ProblemList.jsx` to show ladder by difficulty
+- [x] Show no, title, tags, knowledge, difficulty, link, and status
+- [x] Progress visualization (e.g., solved count)
+
+✅ **Deliverables:**
+- Public-facing ladder page by difficulty
+- CF handle-based real-time status mapping
+
+---
+
+### 🎨 PHASE 5 – **UI Polish, Theming, and Optimization**
+
+- [x] Implement Dark/Light/System theme switch (CSS root variables)
+- [x] Refactor components into reusable units
+- [x] Add loading spinners and error states
+- [x] Optimize API calls & prevent excessive CF requests
+- [x] Deploy both frontend and backend to **Render**
+
+✅ **Deliverables:**
+- Fast, responsive, clean UI across modes
+- Functional deployment with full features
+
+---
+
+### 📦 PHASE 6 – **Final Testing & Documentation**
+
+- [x] End-to-end testing of all admin flows
+- [x] Cross-browser & mobile responsiveness check
+- [x] Write clean README with setup & admin instructions
+- [x] Push final code to GitHub with commit history
+
+---
+
+## 🧭 Notes & Priorities
+
+- Main admin credentials must be seeded securely in DB
+- OTPs should expire (e.g., after 10 minutes) – handle cleanup if needed
+- Protect all sensitive routes with role-based JWT middleware
+- Do not call Codeforces API unless handle changes
+- Ensure graceful error messages throughout the app
+
+---
