@@ -15,9 +15,17 @@ export const AuthProvider = ({ children }) => {
 
   const [token, setToken] = useState(() => localStorage.getItem("token") || "");
 
+  const BASE_URL =
+    import.meta.env.MODE === "development"
+      ? "http://localhost:5000"
+      : import.meta.env.VITE_API_BASE_URL;
+
   const login = async ({ email, password }) => {
     try {
-      const res = await axios.post("/api/admin/login", { email, password });
+      const res = await axios.post(`${BASE_URL}/api/admin/login`, {
+        email,
+        password,
+      });
       const { token } = res.data;
 
       const decoded = jwtDecode(token);
