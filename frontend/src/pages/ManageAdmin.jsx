@@ -9,9 +9,14 @@ const ManageAdmin = () => {
   const { admin, token } = useAuth();
   const [adminList, setAdminList] = useState([]);
 
+  const BASE_URL =
+    import.meta.env.MODE === "development"
+      ? "http://localhost:5000"
+      : import.meta.env.VITE_API_BASE_URL;
+
   const fetchAdmins = () => {
     axios
-      .get("/api/admin/all", {
+      .get(`${BASE_URL}/api/admin/all`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setAdminList(res.data))
@@ -26,7 +31,7 @@ const ManageAdmin = () => {
 
   const approve = async (id) => {
     await axios.patch(
-      `/api/admin/approve-admin/${id}`,
+      `${BASE_URL}/api/admin/approve-admin/${id}`,
       {},
       {
         headers: { Authorization: `Bearer ${token}` },
@@ -36,7 +41,7 @@ const ManageAdmin = () => {
   };
 
   const deny = async (id) => {
-    await axios.delete(`/api/admin/deny/${id}`, {
+    await axios.delete(`${BASE_URL}/api/admin/deny/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     fetchAdmins();
@@ -44,7 +49,7 @@ const ManageAdmin = () => {
 
   const revoke = async (id) => {
     await axios.post(
-      `/api/admin/revoke/${id}`,
+      `${BASE_URL}/api/admin/revoke/${id}`,
       {},
       {
         headers: { Authorization: `Bearer ${token}` },

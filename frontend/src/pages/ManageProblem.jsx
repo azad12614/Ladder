@@ -14,9 +14,14 @@ const ManageProblem = () => {
   const isAdmin = admin?.role === "admin";
   const isMainAdmin = admin?.role === "main_admin";
 
+  const BASE_URL =
+    import.meta.env.MODE === "development"
+      ? "http://localhost:5000"
+      : import.meta.env.VITE_API_BASE_URL;
+
   const fetchProblems = async () => {
     try {
-      const res = await axios.get(`/api/problems/${rating}`);
+      const res = await axios.get(`${BASE_URL}/api/problems/${rating}`);
       setProblems(res.data);
     } catch (err) {
       console.error("Error fetching problems:", err);
@@ -25,7 +30,7 @@ const ManageProblem = () => {
 
   const handleRequestDelete = async (problemId) => {
     try {
-      await axios.delete(`/api/problems/${rating}/${problemId}`, {
+      await axios.delete(`${BASE_URL}/api/problems/${rating}/${problemId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchProblems(); // refresh after request
@@ -36,9 +41,12 @@ const ManageProblem = () => {
 
   const handleApproveDelete = async (id) => {
     try {
-      await axios.delete(`/api/problems/approve-delete/${rating}/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `${BASE_URL}/api/problems/approve-delete/${rating}/${id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       fetchProblems();
     } catch (err) {
       console.error("Error approving delete:", err);
@@ -48,7 +56,7 @@ const ManageProblem = () => {
   const handleDenyDelete = async (id) => {
     try {
       await axios.patch(
-        `/api/problems/deny-delete/${rating}/${id}`,
+        `${BASE_URL}/api/problems/deny-delete/${rating}/${id}`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -62,7 +70,7 @@ const ManageProblem = () => {
 
   const handleHardDelete = async (id) => {
     try {
-      await axios.delete(`/api/problems/${rating}/${id}`, {
+      await axios.delete(`${BASE_URL}/api/problems/${rating}/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchProblems();

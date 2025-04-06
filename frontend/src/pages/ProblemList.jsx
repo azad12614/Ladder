@@ -3,7 +3,7 @@ import "./ProblemList.css";
 
 const ProblemList = () => {
   const [inputHandle, setInputHandle] = useState("");
-  const [handle, setHandle] = useState(""); // actual used after submit
+  const [handle, setHandle] = useState("");
   const [submissions, setSubmissions] = useState([]);
   const [problems, setProblems] = useState([]);
   const [selectedRating, setSelectedRating] = useState("800");
@@ -12,12 +12,17 @@ const ProblemList = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const BASE_URL =
+    import.meta.env.MODE === "development"
+      ? "http://localhost:5000"
+      : import.meta.env.VITE_API_BASE_URL;
+
   const ratings = ["800", "900", "1000", "1100", "1200", "1300", "1400"];
 
   useEffect(() => {
     const fetchProblems = async () => {
       try {
-        const res = await fetch(`/api/problems/${selectedRating}`);
+        const res = await fetch(`${BASE_URL}/api/problems/${selectedRating}`);
         const data = await res.json();
         setProblems(data);
       } catch (err) {

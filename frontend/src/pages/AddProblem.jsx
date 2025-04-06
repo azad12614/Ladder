@@ -16,6 +16,11 @@ const AddProblem = () => {
   });
   const [message, setMessage] = useState("");
 
+  const BASE_URL =
+    import.meta.env.MODE === "development"
+      ? "http://localhost:5000"
+      : import.meta.env.VITE_API_BASE_URL;
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -26,7 +31,7 @@ const AddProblem = () => {
     const payload = { ...form, addedBy: admin.username };
 
     try {
-      await axios.post(`/api/problems/${form.Rating}`, payload, {
+      await axios.post(`${BASE_URL}/api/problems/${form.Rating}`, payload, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMessage("✅ Problem added successfully!");

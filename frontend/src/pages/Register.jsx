@@ -14,6 +14,11 @@ const Register = () => {
   });
   const [error, setError] = useState("");
 
+  const BASE_URL =
+    import.meta.env.MODE === "development"
+      ? "http://localhost:5000"
+      : import.meta.env.VITE_API_BASE_URL;
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -23,7 +28,7 @@ const Register = () => {
     setError("");
 
     try {
-      await axios.post("/api/admin/register", form);
+      await axios.post(`${BASE_URL}/api/admin/register`, form);
       alert(
         "✅ Registration successful! Awaiting approval from the main admin."
       );
