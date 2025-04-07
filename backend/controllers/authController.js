@@ -1,7 +1,9 @@
-// authcontrollers
+// controllers/authController.js
 const Admin = require("../models/Admin");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const sendEmail = require("../utils/sendEmail"); // adjust path if needed
+const { generateOTP, storeOTP, verifyOTP } = require("../utils/otpUtils");
 
 const loginAdmin = async (req, res) => {
   const { email, password } = req.body;
@@ -88,6 +90,61 @@ const registerAdmin = async (req, res) => {
   } catch (err) {
     console.error("Register error:", err);
     res.status(500).json({ message: "Server error during registration." });
+  }
+};
+
+const recoverPassword = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const admin = await Admin.findOne({ email });
+    if (!admin) return res.status(404).json({ message: "Admin not found." });
+
+    const otp = generateOTP();
+    storeOTP(email, otp);
+
+    await sendEmail(
+      email,
+      "Ladder Admin Password Recovery OTP",
+      `<p>Your OTP for password recovery is: <strong>${otp}</strong></p>`
+    );
+
+    return res
+      .status(403)
+      .json({ message: "OTP system not working.Resend in not working." });
+  } catch (err) {
+    console.error("Forgot password error:", err);
+    return res.status(500).json({ message: "Server error." });
+  }
+};
+
+const verifyOtp = (req, res) => {
+  const { email, otp } = req.body;
+
+  if (verifyOTP(email, otp)) {
+    return res
+      .status(200)
+      .json({ message: "OTP verified. Proceed to reset password." });
+  } else {
+    return res.status(400).json({ message: "Invalid or expired OTP." });
+  }
+};
+
+const updatePassword = async (req, res) => {
+  const { email, newPassword } = req.body;
+
+  try {
+    const admin = await Admin.findOne({ email });
+    if (!admin) return res.status(404).json({ message: "Admin not found." });
+
+    const hashed = await bcrypt.hash(newPassword, 10);
+    admin.password = hashed;
+    await admin.save();
+
+    return res.status(200).json({ message: "Password updated successfully." });
+  } catch (err) {
+    console.error("Reset password error:", err);
+    return res.status(500).json({ message: "Server error." });
   }
 };
 
@@ -182,6 +239,9 @@ const revokeAdmin = async (req, res) => {
 module.exports = {
   loginAdmin,
   registerAdmin,
+  recoverPassword,
+  verifyOtp,
+  updatePassword,
   getPendingAdmins,
   approveAdmin,
   denyAdmin,

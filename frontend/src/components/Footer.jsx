@@ -6,7 +6,14 @@ const Footer = () => {
   return (
     <footer className="footer">
       <p>
-        Made with ❤️ by <span className="accent-text">Abdullah Al Azad</span>{" "}
+        Made with ❤️ by{" "}
+        <a
+          href="https://azad12614.onrender.com/"
+          target="_blank"
+          className="accent-text"
+        >
+          Abdullah Al Azad
+        </a>{" "}
         for <span className="accent-text">IIUCCPS</span>
       </p>
       <p>© 2024 IIUCCPS Ladder</p>

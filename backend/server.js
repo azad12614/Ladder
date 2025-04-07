@@ -1,18 +1,19 @@
+// server.js
+const dotenv = require("dotenv");
 const express = require("express");
 const cors = require("cors");
-const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
 const problemRoutes = require("./routes/problemRoutes");
 const connectDB = require("./config/db");
 
 dotenv.config();
-
-const app = express(); // ✅ app declared here
+const app = express();
 
 app.use(
   cors({
-    origin: "https://cf-ladder.onrender.com", // or '*' for testing
+    origin: "https://cf-ladder.onrender.com",
+    // origin: "*",
     credentials: true,
   })
 );

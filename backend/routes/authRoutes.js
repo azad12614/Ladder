@@ -1,9 +1,12 @@
-// routes - authRoutes
+// routes/authRoutes.js
 const express = require("express");
 const router = express.Router();
 const {
   loginAdmin,
   registerAdmin,
+  recoverPassword,
+  verifyOtp,
+  updatePassword,
   getPendingAdmins,
   getAllAdmins,
   approveAdmin,
@@ -20,6 +23,11 @@ router.post("/login", loginAdmin);
 
 // Register new admin (pending approval)
 router.post("/register", registerAdmin);
+
+// Password Recovery
+router.post("/recover-password", recoverPassword);
+router.post("/verify-otp", verifyOtp);
+router.post("/update-password", updatePassword);
 
 // Get all pending admins - only accessible by main admin
 router.get("/pending-admins", verifyToken, requireMainAdmin, getPendingAdmins); // ✅ Protected

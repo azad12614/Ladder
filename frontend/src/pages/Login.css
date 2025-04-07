@@ -9,7 +9,7 @@
 }
 
 .login-form {
-  background-color: var(--secondary);
+  background-color: var(--bg-alt);
   color: var(--text);
   padding: 2rem;
   border-radius: var(--border-radius);

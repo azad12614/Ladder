@@ -1,0 +1,120 @@
+.not-found-container {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: "Courier New", monospace;
+  padding: 2rem;
+}
+
+.glitch {
+  font-size: 8rem;
+  font-weight: bold;
+  color: var(--primary);
+  position: relative;
+  animation: glitch 1s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.glitch::before {
+  animation: glitchTop 1s infinite linear;
+  color: var(--glitch-pink);
+  top: -2px;
+}
+
+.glitch::after {
+  animation: glitchBottom 1s infinite linear;
+  color: var(--glitch-cyan);
+  top: 2px;
+}
+
+.subtitle {
+  font-size: 2rem;
+  margin-top: 1rem;
+  color: var(--accent);
+}
+
+.message {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+}
+
+.message .tle {
+  color: var(--status-wa);
+  font-weight: bold;
+}
+
+.back-button {
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: var(--primary-hover);
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes glitchTop {
+  0% {
+    clip-path: inset(0 0 80% 0);
+  }
+  50% {
+    clip-path: inset(30% 0 50% 0);
+  }
+  100% {
+    clip-path: inset(10% 0 90% 0);
+  }
+}
+
+@keyframes glitchBottom {
+  0% {
+    clip-path: inset(80% 0 0 0);
+  }
+  50% {
+    clip-path: inset(50% 0 30% 0);
+  }
+  100% {
+    clip-path: inset(90% 0 10% 0);
+  }
+}

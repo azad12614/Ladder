@@ -56,6 +56,9 @@
   --btn-approve-hover: #059669;
   --btn-deny: #f97316;
   --btn-deny-hover: #ea580c;
+
+  --glitch-pink: #f0f;
+  --glitch-cyan: #0ff;
 }
 
 [data-theme="dark"] {
@@ -115,6 +118,9 @@
   --btn-approve-hover: #059669;
   --btn-deny: #f97316;
   --btn-deny-hover: #ea580c;
+
+  --glitch-pink: #f0f;
+  --glitch-cyan: #0ff;
 }
 
 #root {

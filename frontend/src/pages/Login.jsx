@@ -1,6 +1,6 @@
 // src/pages/Login.jsx
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import Button from "../components/Button";
 import "./Login.css";
@@ -53,10 +53,10 @@ const Login = () => {
         />
         <Button type="submit">Login</Button>
         <p className="hint">
-          Don’t have an account? <a href="/register">Register</a>
+          Don’t have an account? <Link to="/register">Register</Link>
         </p>
         <p className="hint">
-          Forgot password? <a href="/recover">Recover</a>
+          Forgot password? <Link to="/recover">Recover</Link>
         </p>
       </form>
     </div>
