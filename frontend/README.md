@@ -1,6 +1,8 @@
-# 🚀 Ladder – Competitive Programming Training Platform
+# 🚀 Ladder: Codeforces Ladder Training Platform
 
-**Ladder** is a web-based platform developed to help competitive programmers, especially members of the **IIUC Competitive Programming Society (IIUCCPS)**, improve their Codeforces ratings through structured and curated problem ladders. **Ladder** is a modern, admin-controlled CP ladder platform designed to help users train on Codeforces problems by difficulty while tracking real-time progress using their handle.
+> A modern, admin-controlled CP training tool for the **IIUC Competitive Programming Society (IIUCCPS)**
+
+**Ladder** is a web-based platform developed to help competitive programmers, especially members of the **IIUC Competitive Programming Society (IIUCCPS)**, improve their Codeforces ratings through structured and curated problem ladders. **Ladder** is a platform designed to help users train on Codeforces problems by difficulty while tracking real-time progress using their handle.
 
 This project is developed and maintained by **Abdullah Al Azad** as a solo full-stack application, inspired by IIUCCPS bootcamps and problem-solving activities.
 
@@ -10,6 +12,7 @@ This project is developed and maintained by **Abdullah Al Azad** as a solo full-
 
 - 📊 **Track Your Progress**  
   Users can submit their Codeforces handle to visualize their progress on a ladder of problems.
+
 - 📊 **Codeforces API Integration**
   Shows `AC`, `WA`, `TLE`, or `X` for each problem
 
@@ -62,7 +65,7 @@ This project is developed and maintained by **Abdullah Al Azad** as a solo full-
 1. **Main Admin Login**
 
 - Logs in directly with credentials (pre-saved in DB).
-- Login, approve/deny admins, manage problems, approve deletions
+- Manage admins and problems, approve or deny requests and deletions
 
 2. **New Admin Request**
 
@@ -102,7 +105,18 @@ npm install
 npm run dev
 ```
 
-Make sure the backend server is running and matches the frontend `API_BASE_URL`.
+Ensure the backend server is running and the frontend's API_BASE_URL matches it. `API_BASE_URL`.
+
+---
+
+## 🧱 Development Phases
+
+- ✅ **PHASE 1 – Project Setup & Base Structure**
+- 🔐 **PHASE 2 – Admin Authentication System**
+- 📚 **PHASE 3 – Problem Management System**
+- 🌐 **PHASE 4 – Public User Interface & Codeforces Integration**
+- **🎨 PHASE 5 – UI Polish, Theming, and Optimization**
+- **📦 PHASE 6 – Final Testing & Documentation**
 
 ---
 

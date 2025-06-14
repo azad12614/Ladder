@@ -11,6 +11,8 @@ const ProblemList = () => {
   const [sortOption, setSortOption] = useState("None");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [totalCount, setTotalCount] = useState(null);
+  const [userCount, setUserCount] = useState(null);
 
   const BASE_URL =
     import.meta.env.MODE === "development"
@@ -138,9 +140,19 @@ const ProblemList = () => {
             );
             const data = await res.json();
             if (data.status === "OK") {
-              setHandle(trimmed); // save to state
+              setHandle(trimmed);
               setSubmissions(data.result);
-              localStorage.setItem("cf_handle", trimmed); // ✅ remember it
+              localStorage.setItem("cf_handle", trimmed);
+
+              const res2 = await fetch(`${BASE_URL}/api/user/count-user`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ handle: trimmed }),
+              });
+
+              const countData = await res2.json();
+              setTotalCount(countData.total);
+              setUserCount(countData.user);
             } else {
               setError("Invalid Codeforces handle.");
               setSubmissions([]);
@@ -158,8 +170,30 @@ const ProblemList = () => {
           value={inputHandle}
           onChange={(e) => setInputHandle(e.target.value)}
         />
-        <button type="submit">Set Handle</button>
+        <button type="submit">Submit Handle</button>
       </form>
+
+      {totalCount !== null && userCount !== null && (
+        <div className="count-popup-boxes">
+          <div className="count-box">
+            <strong>📊 Total API Calls:</strong> {totalCount}
+          </div>
+          <div className="count-box">
+            <strong>👤 Your Calls:</strong> {userCount}
+          </div>
+        </div>
+      )}
+
+      {userCount == null && (
+        <div className="count-popup-boxes">
+          <div className="count-box">
+            <strong>📊 Total API Calls:</strong> 🤔
+          </div>
+          <div className="count-box">
+            <strong>👤 Your Calls:</strong> 🤔
+          </div>
+        </div>
+      )}
 
       <div className="rating-tabs">
         {ratings.map((rating) => (

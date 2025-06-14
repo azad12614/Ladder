@@ -51,6 +51,23 @@ h2 {
   background-color: var(--primary-hover);
 }
 
+.count-popup-boxes {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+  justify-content: center;
+}
+
+.count-box {
+  background-color: var(--info-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  padding: 10px 16px;
+  color: var(--text);
+  font-size: 16px;
+  box-shadow: var(--box-shadow);
+}
+
 .rating-tabs {
   display: flex;
   flex-wrap: wrap;

@@ -5,6 +5,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
 const problemRoutes = require("./routes/problemRoutes");
+const userRoutes = require("./routes/userRoutes");
 const connectDB = require("./config/db");
 
 dotenv.config();
@@ -12,8 +13,8 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://cf-ladder.onrender.com",
-    // origin: "*",
+    // origin: "https://cf-ladder.onrender.com",
+    origin: "*",
     credentials: true,
   })
 );
@@ -24,6 +25,7 @@ app.use(express.json());
 // app.use("https://ladder-backend.onrender.com/api/problems", problemRoutes);
 app.use("/api/admin", authRoutes);
 app.use("/api/problems", problemRoutes);
+app.use("/api/user", userRoutes);
 
 // 🌐 Connect to MongoDB and then start server
 connectDB().then(() => {
