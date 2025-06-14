@@ -33,6 +33,8 @@ This project is developed and maintained by **Abdullah Al Azad** as a solo full-
 
 - ☁️ **Full-Stack Render Deployment**
 
+- 👨🏻‍💻 **User Counter**
+
 ---
 
 ## 🧠 Tech Stack

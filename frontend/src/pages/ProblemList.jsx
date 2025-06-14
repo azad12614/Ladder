@@ -176,10 +176,10 @@ const ProblemList = () => {
       {totalCount !== null && userCount !== null && (
         <div className="count-popup-boxes">
           <div className="count-box">
-            <strong>📊 Total API Calls:</strong> {totalCount}
+            <strong>📞 Total API Calls:</strong> {totalCount}
           </div>
           <div className="count-box">
-            <strong>👤 Your Calls:</strong> {userCount}
+            <strong>🙋🏻‍♂️ Your Calls:</strong> {userCount}
           </div>
         </div>
       )}
@@ -187,10 +187,10 @@ const ProblemList = () => {
       {userCount == null && (
         <div className="count-popup-boxes">
           <div className="count-box">
-            <strong>📊 Total API Calls:</strong> 🤔
+            <strong>📞 Total API Calls:</strong> 🤔
           </div>
           <div className="count-box">
-            <strong>👤 Your Calls:</strong> 🤔
+            <strong>🙋🏻‍♂️ Your Calls:</strong> 🤔
           </div>
         </div>
       )}
