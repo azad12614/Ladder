@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <main className="home-container">
       <section className="hero">
-        <h1 className="hero-title">🪜Ladder Platform</h1>
+        <h1 className="hero-title">🪜The Ladder Platform</h1>
         <p className="hero-subtitle">
           A Codeforces-based competitive programming training platform tailored
           for IIUCCPS Programmers.
