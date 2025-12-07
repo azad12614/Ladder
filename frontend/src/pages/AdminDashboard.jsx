@@ -1,12 +1,14 @@
 // src/pages/AdminDashboard.jsx
-import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import AdminStatsPopup from "../components/AdminStatsPopup";
 import "./AdminDashboard.css";
 
 const AdminDashboard = () => {
   const { admin } = useAuth();
   const isMainAdmin = admin?.role === "main_admin";
+  const [showPopup, setShowPopup] = useState(false);
 
   return (
     <div className="admin-dashboard">
@@ -47,14 +49,24 @@ const AdminDashboard = () => {
             <button className="btn-primary">Manage Problems</button>
           </Link>
           {isMainAdmin && (
-            <Link to="/manage-admins">
-              <button className="btn-approve">Review Admin Requests</button>
-            </Link>
+            <>
+              <Link to="/manage-admins">
+                <button className="btn-approve">Review Admin Requests</button>
+              </Link>
+
+              <button
+                onClick={() => setShowPopup(true)}
+                className="admin-stats-btn"
+              >
+                View Admin Stats
+              </button>
+            </>
           )}
           <Link to="/view-problems">
             <button className="btn-secondary">Go to Problem List</button>
           </Link>
         </div>
+        <AdminStatsPopup open={showPopup} onClose={() => setShowPopup(false)} />
       </section>
     </div>
   );

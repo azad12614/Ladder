@@ -1,12 +1,14 @@
-// server.js
-const dotenv = require("dotenv");
+// backend/server.js
+require("dotenv").config(); // must be first
 const express = require("express");
 const cors = require("cors");
-const mongoose = require("mongoose");
+const connectDB = require("./config/db");
+
+// existing route imports
 const authRoutes = require("./routes/authRoutes");
 const problemRoutes = require("./routes/problemRoutes");
 const userRoutes = require("./routes/userRoutes");
-const connectDB = require("./config/db");
+const adminStatsRoutes = require("./routes/adminStatsRoutes");
 
 dotenv.config();
 const app = express();
@@ -26,6 +28,7 @@ app.use(express.json());
 app.use("/api/admin", authRoutes);
 app.use("/api/problems", problemRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/admin", adminStatsRoutes);
 
 // 🌐 Connect to MongoDB and then start server
 connectDB().then(() => {

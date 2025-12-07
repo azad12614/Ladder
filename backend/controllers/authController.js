@@ -68,6 +68,8 @@ const registerAdmin = async (req, res) => {
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    console.log(hashedPassword);
+
     // Create admin with isApproved: false
     const newAdmin = new Admin({
       username,
