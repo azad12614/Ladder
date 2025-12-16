@@ -1,5 +1,5 @@
 // backend/server.js
-require("dotenv").config(); // must be first
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
@@ -10,21 +10,17 @@ const problemRoutes = require("./routes/problemRoutes");
 const userRoutes = require("./routes/userRoutes");
 const adminStatsRoutes = require("./routes/adminStatsRoutes");
 
-dotenv.config();
 const app = express();
 
 app.use(
   cors({
-    // origin: "https://cf-ladder.onrender.com",
-    origin: "*",
+    origin: ["http://localhost:5173", "https://cf-ladder.onrender.com"],
     credentials: true,
   })
 );
 app.use(express.json());
 
 // 🔐 API Routes
-// app.use("https://ladder-backend.onrender.com/api/admin", authRoutes);
-// app.use("https://ladder-backend.onrender.com/api/problems", problemRoutes);
 app.use("/api/admin", authRoutes);
 app.use("/api/problems", problemRoutes);
 app.use("/api/user", userRoutes);
